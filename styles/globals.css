@@ -6,6 +6,9 @@
     .container {
         @apply mx-auto px-6;
     }
+    .button {
+        @apply uppercase block w-full p-4 rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none;
+    }
     .icon-button {
         @apply inline-flex items-center p-2 rounded-lg focus:ring-2;
     }
