@@ -1,7 +1,7 @@
 import React from "react";
 import BlogCard from "./BlogCard";
 
-const Blogs = () => {
+const Blogs = ({ blogs, isLoading }) => {
     return (
         <div className="container pb-20">
             <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
@@ -11,10 +11,9 @@ const Blogs = () => {
                 </p>
             </div>
             <div className="grid lg:grid-cols-2 gap-8 ">
-                <BlogCard />
-                <BlogCard />
-                <BlogCard />
-                <BlogCard />
+                {blogs.slice(0, 4).map((blog) => (
+                    <BlogCard key={blog?._id} blog={blog} />
+                ))}
             </div>
         </div>
     );
