@@ -1,5 +1,6 @@
 import React from "react";
 import BlogCard from "./BlogCard";
+import { CirclesWithBar } from "react-loader-spinner";
 
 const Blogs = ({ blogs, isLoading }) => {
     return (
@@ -10,11 +11,17 @@ const Blogs = ({ blogs, isLoading }) => {
                     We use an agile approach to test assumptions and connect with the needs of your audience early and often.
                 </p>
             </div>
-            <div className="grid lg:grid-cols-2 gap-8 ">
-                {blogs.slice(0, 4).map((blog) => (
-                    <BlogCard key={blog?._id} blog={blog} />
-                ))}
-            </div>
+            {isLoading ? (
+                <div className="flex justify-center items-center">
+                    <CirclesWithBar height="160" width="160" color="#362c75" />
+                </div>
+            ) : (
+                <div className="grid lg:grid-cols-2 gap-8 ">
+                    {blogs.slice(0, 4).map((blog) => (
+                        <BlogCard key={blog?._id} blog={blog} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

@@ -1,5 +1,3 @@
-import axios from "axios";
-import Image from "next/image";
 import { useAuth } from "@/hooks/useAuth";
 import { useForm } from "react-hook-form";
 import AuthLayout from "@/layouts/AuthLayout";

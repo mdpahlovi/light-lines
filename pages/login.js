@@ -1,5 +1,4 @@
 import AuthLayout from "@/layouts/AuthLayout";
-import Image from "next/image";
 import Link from "next/link";
 import { ImGooglePlus3 } from "react-icons/im";
 import { BsFacebook, BsGithub } from "react-icons/bs";
