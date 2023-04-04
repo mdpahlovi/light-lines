@@ -16,7 +16,13 @@
         @apply text-white ring-white;
     }
     .input {
-        @apply block w-full p-2 bg-transparent text-sm border text-white border-gray-700 rounded-lg focus:border-gray-300 focus:outline-none;
+        @apply block w-full px-6 py-4 bg-transparent text-sm border rounded-lg focus:outline-none;
+    }
+    .input-light {
+        @apply border-gray-300 focus:border-gray-700;
+    }
+    .input-dark {
+        @apply bg-black text-white border-gray-700 focus:border-gray-300;
     }
     .nav-link {
         @apply font-medium tracking-wider py-2 pl-3 pr-4 text-white hover:bg-blue-700 rounded hover:lg:bg-transparent hover:lg:text-blue-700 lg:p-0;

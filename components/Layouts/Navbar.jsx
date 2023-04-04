@@ -19,7 +19,7 @@ export default function Navbar() {
                         <div className="absolute inset-0 flex items-center pl-3 pointer-events-none">
                             <HiOutlineSearch size={20} className="text-white" />
                         </div>
-                        <input type="text" className="input pl-11" placeholder="Search..." />
+                        <input type="text" className="input input-dark p-2 pl-11" placeholder="Search..." />
                     </div>
                     <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden icon-button button-light">
                         {isOpen ? <MdOutlineClose size={20} /> : <HiOutlineMenu size={20} />}
@@ -31,7 +31,7 @@ export default function Navbar() {
                         <div className="absolute inset-0 flex items-center pl-3 pointer-events-none">
                             <HiOutlineSearch size={20} className="text-white" />
                         </div>
-                        <input type="text" className="input pl-11" placeholder="Search..." />
+                        <input type="text" className="input input-dark p-2 pl-11" placeholder="Search..." />
                     </div>
                     <div className="flex flex-col p-4 lg:p-0 mt-4 border rounded-lg lg:flex-row lg:gap-x-8 lg:mt-0 lg:border-0 bg-gray-800 lg:bg-gray-900 border-gray-700">
                         <Link href="/" className="nav-link">
@@ -40,8 +40,8 @@ export default function Navbar() {
                         <Link href="/blogs" className="nav-link">
                             Blogs
                         </Link>
-                        <Link href="/" className="nav-link">
-                            Services
+                        <Link href="/add-blog" className="nav-link">
+                            Add Blog
                         </Link>
                     </div>
                 </div>

@@ -9,7 +9,10 @@ const MenuItem = ({ children, onClick }) => {
     return (
         <Menu.Item>
             {({ active }) => (
-                <button onClick={onClick} className={`${active ? "bg-blue-500 text-white" : "text-black"} flex w-full items-center rounded-md px-2 py-2 gap-2`}>
+                <button
+                    onClick={onClick}
+                    className={`${active ? "bg-indigo-500 text-white" : "text-black"} flex w-full items-center rounded-md px-2 py-2 gap-2`}
+                >
                     {children}
                 </button>
             )}

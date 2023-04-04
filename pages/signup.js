@@ -37,19 +37,19 @@ export default function Signup() {
                     <h3 className="font-bold text-3xl">Sign up</h3>
                     <p className="">
                         Already have an account?
-                        <Link href="/login" className="ml-2 font-medium text-indigo-600 hover:text-indigo-500">
+                        <Link href="/login" className="ml-2 font-medium text-indigo-500 hover:text-indigo-600">
                             Log in
                         </Link>
                     </p>
                 </div>
                 <form onSubmit={handleSubmit(handleSignup)} className="w-full mx-auto space-y-4">
                     <div className="flex gap-4">
-                        <input type="text" {...register("fast_name")} placeholder="Fast Name" className="input px-6 py-4 bg-black" />
-                        <input type="text" {...register("last_name")} placeholder="Last Name" className="input px-6 py-4 bg-black" />
+                        <input type="text" {...register("fast_name")} placeholder="Fast Name" className="input input-dark" />
+                        <input type="text" {...register("last_name")} placeholder="Last Name" className="input input-dark" />
                     </div>
-                    <input type="email" {...register("email")} placeholder="Email" className="input px-6 py-4 bg-black" />
-                    <input type="password" {...register("password")} placeholder="Password" className="input px-6 py-4 bg-black" />
-                    <input type="password" {...register("cPassword")} placeholder="Confirm Password" className="input px-6 py-4 bg-black" />
+                    <input type="email" {...register("email")} placeholder="Email" className="input input-dark" />
+                    <input type="password" {...register("password")} placeholder="Password" className="input input-dark" />
+                    <input type="password" {...register("cPassword")} placeholder="Confirm Password" className="input input-dark" />
                     <button type="submit" className="button p-4">
                         {loading ? "Loading..." : "Sign up"}
                     </button>

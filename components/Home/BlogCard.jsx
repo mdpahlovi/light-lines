@@ -29,7 +29,7 @@ const BlogCard = () => {
                     />
                     <span className="font-medium">Jese Leos</span>
                 </div>
-                <Link href="/" className="inline-flex items-center font-medium hover:underline gap-2">
+                <Link href="/" className="inline-flex items-center font-medium hover:text-indigo-600 hover:underline gap-2">
                     Read more
                     <HiOutlineArrowSmallRight size={20} />
                 </Link>

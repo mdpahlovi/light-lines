@@ -61,7 +61,7 @@ export default function Login() {
                     <h3 className="font-bold text-3xl">Log in</h3>
                     <p className="">
                         If don&apos;t have any account?
-                        <Link href="/signup" className="ml-2 font-medium text-indigo-600 hover:text-indigo-500">
+                        <Link href="/signup" className="ml-2 font-medium text-indigo-500 hover:text-indigo-600">
                             Sign up
                         </Link>
                     </p>
@@ -79,8 +79,8 @@ export default function Login() {
                 </div>
                 <p className="text-gray-100 text-center">or use email to login</p>
                 <form onSubmit={handleSubmit(handleLogin)} className="w-full mx-auto space-y-4">
-                    <input type="email" {...register("email")} placeholder="Email" className="input px-6 py-4 bg-black" />
-                    <input type="password" {...register("password")} placeholder="Password" className="input px-6 py-4 bg-black" />
+                    <input type="email" {...register("email")} placeholder="Email" className="input input-dark" />
+                    <input type="password" {...register("password")} placeholder="Password" className="input input-dark" />
                     <div className="text-right text-gray-400 hover:underline hover:text-gray-100">
                         <Link href="/">Forgot your password?</Link>
                     </div>
