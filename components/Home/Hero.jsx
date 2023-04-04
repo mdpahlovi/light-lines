@@ -4,7 +4,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 const Hero = () => {
     return (
         <section className="container">
-            <div className="py-28 gap-12 overflow-hidden lg:flex items-center">
+            <div className="py-20 gap-12 overflow-hidden lg:flex items-center">
                 <div className="flex-none space-y-5 max-w-xl">
                     <a
                         href="javascript:void(0)"

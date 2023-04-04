@@ -34,11 +34,11 @@ export default function Navbar() {
                         <input type="text" className="input pl-11" placeholder="Search..." />
                     </div>
                     <div className="flex flex-col p-4 lg:p-0 mt-4 border rounded-lg lg:flex-row lg:gap-x-8 lg:mt-0 lg:border-0 bg-gray-800 lg:bg-gray-900 border-gray-700">
-                        <Link href="/" className="nav-link active-link">
+                        <Link href="/" className="nav-link">
                             Home
                         </Link>
-                        <Link href="/" className="nav-link">
-                            About
+                        <Link href="/blogs" className="nav-link">
+                            Blogs
                         </Link>
                         <Link href="/" className="nav-link">
                             Services
