@@ -10,14 +10,12 @@ import {
     signOut,
 } from "firebase/auth";
 import app from "@/config/firebase.config";
-import axios from "axios";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
 export const UserContext = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [email, setEmail] = useState(null);
+    const [authUser, setAuthUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -50,31 +48,14 @@ export const UserContext = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setEmail(currentUser?.email);
+            setAuthUser(currentUser);
+            setLoading(false);
         });
         return () => unSubscribe();
     }, []);
 
-    useEffect(() => {
-        if (!user?._id && email) {
-            axios
-                .get(`/api/user/${email}`)
-                .then((res) => {
-                    setLoading(false);
-                    setUser(res.data);
-                })
-                .catch(({ message }) => {
-                    setLoading(false);
-                    console.error(message);
-                });
-        } else {
-            setLoading(false);
-        }
-    }, [user?._id, email]);
-
     const authInfo = {
-        user,
-        setUser,
+        authUser,
         loading,
         setLoading,
         createUser,

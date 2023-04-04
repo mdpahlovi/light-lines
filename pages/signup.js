@@ -3,25 +3,17 @@ import Image from "next/image";
 import { useAuth } from "@/hooks/useAuth";
 import { useForm } from "react-hook-form";
 import AuthLayout from "@/layouts/AuthLayout";
+import Link from "next/link";
 
 export default function Signup() {
-    const { createUser, setLoading, setUser, loading } = useAuth();
+    const { createUser, setLoading, loading } = useAuth();
 
     const { handleSubmit, register } = useForm();
     const handleSignup = ({ fast_name, last_name, email, password }) => {
         const user = { name: `${fast_name} ${last_name}`, email, avatar: "", role: "reader", isAdmin: false };
-
         createUser(email, password)
-            .then((auth) => {
-                if (auth.user.uid) {
-                    axios
-                        .post("/api/user", user)
-                        .then((res) => setUser(res.data))
-                        .catch(({ message }) => {
-                            console.error(message);
-                            setLoading(false);
-                        });
-                }
+            .then(({ user }) => {
+                router.replace("/");
             })
             .catch(({ message }) => {
                 console.error(message);
@@ -40,9 +32,17 @@ export default function Signup() {
             >
                 <div className="absolute bg-black/60 inset-0" />
             </div>
-            <div className="absolute lg:static w-full h-full flex flex-col justify-center space-y-6 z-10 py-16 sm:px-16">
-                <Image src="/logo.png" alt="" className="pb-2 mx-auto" width={255} height={40} />
-                <form onSubmit={handleSubmit(handleSignup)} className="w-full px-6 mx-auto space-y-4">
+            <div className="absolute lg:static w-full h-full flex flex-col justify-center space-y-6 z-10 py-16 px-6 sm:px-16">
+                <div className="mt-5 space-y-2">
+                    <h3 className="font-bold text-3xl">Sign up</h3>
+                    <p className="">
+                        Already have an account?
+                        <Link href="/login" className="ml-2 font-medium text-indigo-600 hover:text-indigo-500">
+                            Log in
+                        </Link>
+                    </p>
+                </div>
+                <form onSubmit={handleSubmit(handleSignup)} className="w-full mx-auto space-y-4">
                     <div className="flex gap-4">
                         <input type="text" {...register("fast_name")} placeholder="Fast Name" className="input px-6 py-4 bg-black" />
                         <input type="text" {...register("last_name")} placeholder="Last Name" className="input px-6 py-4 bg-black" />
@@ -50,7 +50,7 @@ export default function Signup() {
                     <input type="email" {...register("email")} placeholder="Email" className="input px-6 py-4 bg-black" />
                     <input type="password" {...register("password")} placeholder="Password" className="input px-6 py-4 bg-black" />
                     <input type="password" {...register("cPassword")} placeholder="Confirm Password" className="input px-6 py-4 bg-black" />
-                    <button type="submit" className="uppercase block w-full p-4 rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
+                    <button type="submit" className="button p-4">
                         {loading ? "Loading..." : "Sign up"}
                     </button>
                 </form>

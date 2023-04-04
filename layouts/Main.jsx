@@ -1,8 +1,9 @@
+import { withProtect } from "@/components/Common/withProtect";
 import Footer from "@/components/Layouts/Footer";
 import Navbar from "@/components/Layouts/Navbar";
 import Head from "next/head";
 
-export default function Main({ children, className, title = "Light Lines - Your beacon of inspiration" }) {
+const Main = ({ children, className, title = "Light Lines - Your beacon of inspiration" }) => {
     return (
         <>
             <Head>
@@ -16,4 +17,6 @@ export default function Main({ children, className, title = "Light Lines - Your 
             <Footer />
         </>
     );
-}
+};
+
+export default withProtect(Main);

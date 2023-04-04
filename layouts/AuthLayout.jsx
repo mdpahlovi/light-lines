@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 
 export default function AuthLayout({ children, title = "Login - Light Lines" }) {
     return (
@@ -16,6 +17,7 @@ export default function AuthLayout({ children, title = "Login - Light Lines" }) 
                 >
                     <div className="absolute bg-black/60 inset-0" />
                     <div className="w-full px-20 z-10">
+                        <Image src="/logo.png" alt="" className="absolute pb-2 top-16" width={255} height={40} />
                         <h1 className="text-5xl font-bold tracking-wide">Keep it special</h1>
                         <p className="text-3xl mt-4">Capture your personal memory in unique way, anywhere.</p>
                     </div>

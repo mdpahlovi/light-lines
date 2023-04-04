@@ -3,12 +3,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import { HiOutlineMenu, HiOutlineSearch } from "react-icons/hi";
-import { useAuth } from "@/hooks/useAuth";
+import AuthUser from "./AuthUser";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const { user } = useAuth();
-    console.log(user);
 
     return (
         <nav className="bg-gray-900 py-4">
@@ -26,6 +24,7 @@ export default function Navbar() {
                     <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden icon-button button-light">
                         {isOpen ? <MdOutlineClose size={20} /> : <HiOutlineMenu size={20} />}
                     </button>
+                    <AuthUser />
                 </div>
                 <div className={`items-center justify-between ${isOpen ? "" : "hidden"} w-full lg:flex lg:w-auto lg:order-1" id="navbar-search`}>
                     <div className="relative mt-3 lg:hidden">

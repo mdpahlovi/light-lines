@@ -1,5 +1,11 @@
+import Hero from "@/components/Home/Hero";
+
 import Main from "@/layouts/Main";
 
 export default function Home() {
-    return <Main>Pahlovi</Main>;
+    return (
+        <Main>
+            <Hero />
+        </Main>
+    );
 }

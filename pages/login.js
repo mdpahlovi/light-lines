@@ -4,11 +4,45 @@ import Link from "next/link";
 import { ImGooglePlus3 } from "react-icons/im";
 import { BsFacebook, BsGithub } from "react-icons/bs";
 import { useForm } from "react-hook-form";
+import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "next/router";
 
 export default function Login() {
+    const router = useRouter();
+    const { loading, setLoading, login, loginWithGoogle, loginWithGithub } = useAuth();
     const { handleSubmit, register } = useForm();
-    const handleLogin = (data) => {
-        console.log(data);
+    const handleLogin = ({ email, password }) => {
+        login(email, password)
+            .then(({ user }) => {
+                router.replace("/");
+            })
+            .catch(({ message }) => {
+                console.error(message);
+                setLoading(false);
+            });
+    };
+
+    //google handler function
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then(({ user }) => {
+                router.replace("/");
+            })
+            .catch(({ message }) => {
+                console.error(message);
+                setLoading(false);
+            });
+    };
+    //github handler function
+    const handleGithubLogin = () => {
+        loginWithGithub()
+            .then(({ user }) => {
+                router.replace("/");
+            })
+            .catch(({ message }) => {
+                console.error(message);
+                setLoading(false);
+            });
     };
 
     return (
@@ -22,22 +56,36 @@ export default function Login() {
             >
                 <div className="absolute bg-black/60 inset-0" />
             </div>
-            <div className="absolute lg:static w-full h-full flex flex-col justify-center space-y-6 z-10 py-16 sm:px-16">
-                <Image src="/logo.png" alt="" className="pb-2 mx-auto" width={255} height={40} />
-                <div className="flex justify-center gap-8">
-                    <ImGooglePlus3 size={32} />
-                    <BsFacebook size={32} />
-                    <BsGithub size={32} />
+            <div className="absolute lg:static w-full h-full flex flex-col justify-center space-y-6 z-10 py-16 px-6 sm:px-16">
+                <div className="mt-5 space-y-2">
+                    <h3 className="font-bold text-3xl">Log in</h3>
+                    <p className="">
+                        If don&apos;t have any account?
+                        <Link href="/signup" className="ml-2 font-medium text-indigo-600 hover:text-indigo-500">
+                            Sign up
+                        </Link>
+                    </p>
+                </div>
+                <div className="grid grid-cols-3 gap-8">
+                    <div onClick={handleGoogleLogin} className="border p-2.5 rounded-2xl">
+                        <ImGooglePlus3 size={32} className="mx-auto" />
+                    </div>
+                    <div className="border p-2.5 rounded-2xl">
+                        <BsFacebook size={32} className="mx-auto" />
+                    </div>
+                    <div onClick={handleGithubLogin} className="border p-2.5 rounded-2xl">
+                        <BsGithub size={32} className="mx-auto" />
+                    </div>
                 </div>
                 <p className="text-gray-100 text-center">or use email to login</p>
-                <form onSubmit={handleSubmit(handleLogin)} className="w-full px-6 mx-auto space-y-4">
+                <form onSubmit={handleSubmit(handleLogin)} className="w-full mx-auto space-y-4">
                     <input type="email" {...register("email")} placeholder="Email" className="input px-6 py-4 bg-black" />
                     <input type="password" {...register("password")} placeholder="Password" className="input px-6 py-4 bg-black" />
                     <div className="text-right text-gray-400 hover:underline hover:text-gray-100">
                         <Link href="/">Forgot your password?</Link>
                     </div>
-                    <button type="submit" className="uppercase block w-full p-4 rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
-                        Log in
+                    <button type="submit" className="button p-4">
+                        {loading ? "Loading..." : "Log in"}
                     </button>
                 </form>
             </div>
