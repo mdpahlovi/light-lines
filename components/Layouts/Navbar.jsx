@@ -3,9 +3,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import { HiOutlineMenu, HiOutlineSearch } from "react-icons/hi";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const { user } = useAuth();
+    console.log(user);
 
     return (
         <nav className="bg-gray-900 py-4">

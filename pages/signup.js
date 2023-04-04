@@ -1,11 +1,32 @@
-import AuthLayout from "@/layouts/AuthLayout";
+import axios from "axios";
 import Image from "next/image";
+import { useAuth } from "@/hooks/useAuth";
 import { useForm } from "react-hook-form";
+import AuthLayout from "@/layouts/AuthLayout";
 
 export default function Signup() {
+    const { createUser, setLoading, setUser, loading } = useAuth();
+
     const { handleSubmit, register } = useForm();
-    const handleSignup = (data) => {
-        console.log(data);
+    const handleSignup = ({ fast_name, last_name, email, password }) => {
+        const user = { name: `${fast_name} ${last_name}`, email, avatar: "", role: "reader", isAdmin: false };
+
+        createUser(email, password)
+            .then((auth) => {
+                if (auth.user.uid) {
+                    axios
+                        .post("/api/user", user)
+                        .then((res) => setUser(res.data))
+                        .catch(({ message }) => {
+                            console.error(message);
+                            setLoading(false);
+                        });
+                }
+            })
+            .catch(({ message }) => {
+                console.error(message);
+                setLoading(false);
+            });
     };
 
     return (
@@ -30,7 +51,7 @@ export default function Signup() {
                     <input type="password" {...register("password")} placeholder="Password" className="input px-6 py-4 bg-black" />
                     <input type="password" {...register("cPassword")} placeholder="Confirm Password" className="input px-6 py-4 bg-black" />
                     <button type="submit" className="uppercase block w-full p-4 rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">
-                        Sign up
+                        {loading ? "Loading..." : "Sign up"}
                     </button>
                 </form>
             </div>
