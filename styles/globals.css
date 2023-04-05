@@ -30,4 +30,7 @@
     .active-link {
         @apply bg-blue-700 lg:bg-transparent lg:text-blue-700;
     }
+    .line-x {
+        @apply flex items-center before:flex-1 before:border after:flex-1 after:border;
+    }
 }

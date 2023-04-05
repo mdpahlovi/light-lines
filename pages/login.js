@@ -65,18 +65,20 @@ export default function Login() {
                         </Link>
                     </p>
                 </div>
-                <div className="grid grid-cols-3 gap-8">
-                    <div onClick={handleGoogleLogin} className="border p-2.5 rounded-2xl">
-                        <ImGooglePlus3 size={32} className="mx-auto" />
-                    </div>
-                    <div className="border p-2.5 rounded-2xl">
-                        <BsFacebook size={32} className="mx-auto" />
-                    </div>
-                    <div onClick={handleGithubLogin} className="border p-2.5 rounded-2xl">
-                        <BsGithub size={32} className="mx-auto" />
-                    </div>
+                <div className="grid xs:grid-cols-3 gap-8">
+                    <button onClick={handleGoogleLogin} className="group border p-2.5 rounded-2xl hover:border-indigo-500">
+                        <ImGooglePlus3 size={32} className="mx-auto group-hover:text-indigo-500" />
+                    </button>
+                    <button className="group border p-2.5 rounded-2xl hover:border-indigo-500">
+                        <BsFacebook size={32} className="mx-auto group-hover:text-indigo-500" />
+                    </button>
+                    <button onClick={handleGithubLogin} className="group border p-2.5 rounded-2xl hover:border-indigo-500">
+                        <BsGithub size={32} className="mx-auto group-hover:text-indigo-500" />
+                    </button>
                 </div>
-                <p className="text-gray-100 text-center">or use email to login</p>
+                <p className="line-x">
+                    <span className="mx-2.5">Or use email to login</span>
+                </p>
                 <form onSubmit={handleSubmit(handleLogin)} className="w-full mx-auto space-y-4">
                     <input type="email" {...register("email")} placeholder="Email" className="input input-dark" />
                     <input type="password" {...register("password")} placeholder="Password" className="input input-dark" />
